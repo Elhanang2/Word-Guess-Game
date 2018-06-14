@@ -1,0 +1,12 @@
+.container{
+    width:600px;height: 600px;
+    border:2px solid red;
+    background-color: rgb(37, 13, 13);
+    color: antiquewhite;
+}
+.col-sm{
+    float: left;
+   /* border: 2px solid red;*/
+    width: 40%;height: 100%;
+    margin:20px;
+}
