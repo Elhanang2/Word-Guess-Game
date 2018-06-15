@@ -1,12 +1,26 @@
-.container{
+
+        .container{
     width:600px;height: 600px;
     border:2px solid red;
     background-color: rgb(37, 13, 13);
     color: antiquewhite;
 }
-.col-sm{
+.title{
+    background-color: aqua;
+    height: 60px;
+    font-style: oblique;
+    font-stretch:extra-expanded;
+    color:rgba(29, 54, 9, 0.904);
+    margin-top: 0px;
+    padding: 20px 10px 40px 20px;
+    font-size: 20px;
+    
+    
+}
+.main{
     float: left;
-   /* border: 2px solid red;*/
-    width: 40%;height: 100%;
+    /*border: 2px solid red;*/
+    width: 40%;height: 400%;
     margin:20px;
+    padding-top: 20px;
 }

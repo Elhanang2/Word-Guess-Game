@@ -1,123 +1,93 @@
-//list of words for the player with in an array
+
         var WORDS=["jupiter",
                 "mars", 
                 "neptune",
                 "pluto",
                 "saturn",
                 "uranus"
-              ]; 
-        //variable initialization and defining    
-        var wins=0;
-        var losses=0;
-        var y="";
-        var guesschance=10;
-        var remaining;
+            ]; 
+        //initialize and declare variables
+        var word="";    
+        var answerArray=[];
+        var wrongArray=[];
         var wrong=true;
-        var remainingLetter=0;       
-        var  answerArray=[];
-        var word="";
-        var wrongletters=[];   
-        var showmessage="";
-        //input users guess
-            var guess=document.getElementById("answer-array");
-            document.onkeyup = function() {
-            
-                //get guess from player
-                guess= event.key;
+        var guess=0;
+        var losses=0;
+        var wins=0;
+        var numOfGuess=10;
         
-            guessone(guess,word);
-        
-                
-                var html =
-
-                "<p>remaining number of letters : " + remainingLetter + "</p>" +
-                "<p> " + y + "</p>" +
-                "<p>guess chance: " + guesschance + "</p>" +
-                "<p>guess: " + guess + "</p>" +
-                "<p>answer array: " + answerArray.join(" ") + "</p>" +
-                "<p>wins: " + wins + "</p>" +
-                "<p>losses: " + losses + "</p>" +
-                "<p>wrong letters: " + wrongletters.join(" ") + "</p>";
-          
-                // Set the inner HTML contents of the #game div to our html string
-                document.querySelector("#game").innerHTML = html;
-                
-            }
-        
-    ;
-    //initial function to randomly pick the word and generate underscore array
-        function empityArray(){
-             //pick random word
-             word=WORDS[Math.floor(Math.random()*WORDS.length)];
-             remainingLetter=word.length;
-            //empityArrayize the answer array 
-            for(var i=0; i<word.length; i++){
-                answerArray[i]="_";
-                //wrongletters[i]=" "
-                 //console.log("hi");
-                //document.getElementById("answer").innerHTML=answerArray.join(" ");
-            }
-        }
-            
-        
-        
-        // function to check  user input and give the required output  
-        function guessone(){
-            //to check if user finish the word and to store the guess in the answer array list 
-            if(guesschance>0 && remainingLetter!=0){
-                wrong=true;
-                guesschance--;
-                //update the game with the guess
-                for(var i=0; i<word.length; i++){
-                    if(word[i]===guess){
-                        answerArray[i]=guess;
-                        wrong=false;
-                        remainingLetter--;
-                        
-                    }
-                    else{}
-                }            
-                 //to check if the user guess is wrong and put the wrong lettrs in an array             
-                if(wrong){
-                    for(var k=0; k<=wrongletters.length; k++){
-                        if(wrongletters[k]==guess){
-                            wrongletters[k]=guess;
-                            
-                        }
-                            
-                    }
-                    wrongletters[wrongletters.length+1]=guess; 
-                    
-                }
-             
-            } 
-             //to check remaining letter and guess chance and determine if the user win   
-             else   if(remainingLetter===0 && guesschance>=0){
                  
-                    wins++;
-                    guesschance=10;
-                    answerArray=[];
-                    empityArray();
-                    remainingLetter=word.length;
-                    guessone();
-                //to check remaining letters and guess chance to determine if the user losses
-                }else if(guesschance<=0 && remainingLetter>=0){
-                    losses++;
-                     y="the word was "+word;
-                    guesschance=10;
-                    answerArray=[];
-                    empityArray();
-                    remainingLetter=word.length;
-                    guessone();
-                    
-                    
-                    
-                }
-                  
-            
-              
-        }
-    
+        //call  start function
         
+        if((losses+wins)<= "10") {
+            start();
+        //
+            for(var i=0; i<word.length; i++){
+                document.onkeyup = function() {
+                        
+                guess=event.key;
+                 getguess(guess);
+                    
+                wronglist(wrong);
+                score();
+                }
+            }       
+        }   
+               
+    //start function to pick words randomly and create underscore empity array
+    function start(){
+        word=WORDS[Math.floor(Math.random()*WORDS.length)];
+        
+        // for function to create underscore array the same us word length
+        answerArray=[];
+        for(var i=0; i<word.length; i++){
+            answerArray[i]="_";
+        }
+        
+        document.getElementById("answer-array").innerHTML="Word length: "+answerArray.join(" ");
+        document.getElementById("numOf").innerHTML="GuessChance: "+ numOfGuess; 
+    } 
+    //getguess accepts the user guess and check if it exists 
+    //if it exists put it in the exact place of the answer arrary  
+    function getguess(){
+        numOfGuess--;
+        for(var j=0; j<word.length; j++){
+            if(word[j]==guess){
+                answerArray[j]=guess;
+                wrong=false;    
+            }
+        }
+        document.getElementById("numOf").innerHTML="GuessChance: "+ numOfGuess; 
+        document.getElementById("answer-array").innerHTML="Word length: "+answerArray.join(" ");
+    }      
+    function wronglist(){
+        if(wrong){
+            if(wrongArray.indexOf(guess)==-1){
+                wrongArray[wrongArray.length]=guess;
+            }else{}
+           
+            
+        }
+        document.getElementById("wrongans").innerHTML="wrong guess: "+wrongArray.join(" ");
+        wrong=true;
+    }                
+    function score(){
+        if(answerArray.indexOf("_")==-1 && numOfGuess>=0){
+            wins++;
+            
+            numOfGuess=10;
+            document.getElementById("wins").innerHTML="wins: "+ wins;
+            document.getElementById("image").src="assets/images/"+word+".jpg"
+            start();
+        }else if(answerArray.indexOf("_")!=-1 && numOfGuess<1){
+            losses++;
+            numOfGuess=10;
+            document.getElementById("losses").innerHTML="losses: " + losses;
+            
+            start();
+        }
+    }          
+           
 
         
+    

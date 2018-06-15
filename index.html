@@ -11,25 +11,32 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div id="image" class="col-sm">
-                    <img src="assets/images/th.jpg">
+        <div class="row" >
+            <div class="col-sm title">
+                <h1>GUESS PLANET WORDS!</h1> 
             </div>
-            <div  class="col-sm">
-                    <div id="game">
-                            <P id="answer-array" >press any key to start the game</P>
-                                <span type="button" id="start"type="text" value="start" onclick="empityArray()"></span>
-                            </div>
-                        <span id="answer"></span>
-            </div>
-            
         </div>
-    </div>  
-    <script type="text/javascript">
-    
-    </script>
-    
-
-    //<script type="text/javascript" src="assets/javascript/game.js"></script>
+        <div class="row">
+            <div class="col-sm main">
+                <img id="image" src="assets/images/th.jpg" style="width:200px; height: 200px;">
+            </div>
+            <div  class="col-sm main">
+                <div id="game">
+                    <p id="word"><h3>Press a key to guess the word</h3> </p>
+                           
+                    <p id="words"></p>
+                        <p id="wrongans"></p>
+                        <P id="answer-array" ></P>
+                        <p id="wins"></p>
+                        <p id="losses"></p>
+                        <p id="numOf"></p>
+                    </div>
+                <span id="answer"></span>
+                </div>
+                
+            </div>
+        </div>     
+        <script type="text/javascript" src="assets/javascript/game.js"></script>
+        
 </body>
 </html>
