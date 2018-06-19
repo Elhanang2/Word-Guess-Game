@@ -4,7 +4,11 @@
                 "neptune",
                 "pluto",
                 "saturn",
-                "uranus"
+                "uranus",
+                "earth",
+                "mercury",
+                "venus"
+
             ]; 
         //initialize and declare variables
         var word="";    
