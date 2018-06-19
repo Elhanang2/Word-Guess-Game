@@ -28,7 +28,7 @@
                 guess=event.key;
                  getguess(guess);
                     
-                wronglist(wrong);
+                wronglist();
                 score();
                 }
             }       
@@ -50,11 +50,16 @@
     //getguess accepts the user guess and check if it exists 
     //if it exists put it in the exact place of the answer arrary  
     function getguess(){
-        numOfGuess--;
+        
         for(var j=0; j<word.length; j++){
-            if(word[j]==guess){
-                answerArray[j]=guess;
-                wrong=false;    
+            if(word[j]==guess ){
+                wrong=false;
+                if(answerArray[j]==guess){
+                   
+                }else {
+                    answerArray[j]=guess;
+                    
+                    numOfGuess--;}    
             }
         }
         document.getElementById("numOf").innerHTML="GuessChance: "+ numOfGuess; 
@@ -62,12 +67,16 @@
     }      
     function wronglist(){
         if(wrong){
-            if(wrongArray.indexOf(guess)==-1){
+            if(wrongArray.indexOf(guess)<0){
+                
                 wrongArray[wrongArray.length]=guess;
+                numOfGuess--;
+                
             }else{}
            
             
         }
+        document.getElementById("numOf").innerHTML="GuessChance: "+ numOfGuess; 
         document.getElementById("wrongans").innerHTML="wrong guess: "+wrongArray.join(" ");
         wrong=true;
     }                
@@ -76,12 +85,16 @@
             wins++;
             
             numOfGuess=10;
+            wrongArray=[];
+            document.getElementById("wrongans").innerHTML="wrong guess: "+wrongArray.join(" ");
             document.getElementById("wins").innerHTML="wins: "+ wins;
             document.getElementById("image").src="assets/images/"+word+".jpg"
             start();
         }else if(answerArray.indexOf("_")!=-1 && numOfGuess<1){
             losses++;
             numOfGuess=10;
+            wrongArray=[];
+            document.getElementById("wrongans").innerHTML="wrong guess: "+wrongArray.join(" ");
             document.getElementById("losses").innerHTML="losses: " + losses;
             
             start();
