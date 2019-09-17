@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, empityArray-scale=1">
-    
+
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-   
+
 </head>
+
 <body>
+
     <div class="container">
-        <div class="row" >
+        <div class="section-title">
             <div class="col-sm title">
-                <h1>GUESS PLANET WORDS!</h1> 
+                <h1>GUESS PLANET WORDS!</h1>
             </div>
         </div>
         <div class="section-content">
+
+            <div class="image-section">
+                <img id="image" src="assets/images/planet.jpg" alt="planet image">
+                <div id="image-description"></div>
+            </div>
+
             <div class="main">
-                <img id="image" src="assets/images/th.jpg" style="width:200px; height: 200px;">
-            </div>
-            <div  class="main">
                 <div id="game">
-                    <p id="word"><h3>Press a key to guess the word</h3> </p>
-                           
+                    <p id="word">
+                        <h3>Press a key to guess the word</h3>
+                    </p>
                     <p id="words"></p>
-                        <p id="wrongans"></p>
-                        <P id="answer-array" ></P>
-                        <p id="wins"></p>
-                        <p id="losses"></p>
-                        <p id="numOf"></p>
-                    </div>
-                <span id="answer"></span>
+                    <p id="wrongans"></p>
+                    <P id="answer-array"></P>
+                    <p id="wins"></p>
+                    <p id="losses"></p>
+                    <p id="numOf"></p>
                 </div>
-                
+                <span id="answer"></span>
+                <div id="restart-button"></div>
             </div>
-        </div>     
-        <script type="text/javascript" src="assets/javascript/game.js"></script>
-        
+
+        </div>
+    </div>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+
 </body>
+
 </html>
